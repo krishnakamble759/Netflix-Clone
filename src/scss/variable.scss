@@ -1,0 +1,95 @@
+// Color Variables
+$nf-red: #e50914;
+$nf-black: #000000;
+$nf-dark-grey: #333333;
+$nf-blue: #1877F2;
+$nf-grey: #333333;
+$nf-light-grey: #8c8c8c;
+$nf-white: #ffffff;
+$nf-light-green: #46d369;
+
+// Breakpoints
+$too-small-mobile: 320px;
+$mid-small-mobile: 340px;
+$small-mobile: 375px;
+$mid-mobile: 500px;
+$mobile: 576px;
+$small-tab: 768px;
+$big-tab: 992px;
+$small-desktop: 1024px;
+$desktop: 1200px;
+$mid-desktop: 1440px;
+$large-desktop: 1500px;
+
+// Responsive Mixins
+@mixin too-small-mobile {
+    @media (max-width: $too-small-mobile) {
+        @content;
+    }
+}
+
+@mixin mid-small-mobile {
+    @media (max-width: $mid-small-mobile) {
+        @content;
+    }
+}
+
+@mixin small-mobile {
+    @media (max-width: $small-mobile) {
+        @content;
+    }
+}
+
+@mixin mid-mobile {
+    @media (max-width: $mid-mobile) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin small-tab {
+    @media (max-width: $small-tab) {
+        @content;
+    }
+}
+
+@mixin big-tab {
+    @media (max-width: $big-tab) {
+        @content;
+    }
+}
+
+@mixin small-desktop {
+    @media (max-width: $small-desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin mid-desktop {
+    @media (max-width: $mid-desktop) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (max-width: $large-desktop) {
+        @content;
+    }
+}
+
+@mixin min-desktop {
+    @media (min-width: 1201px) {
+        @content;
+    }
+}

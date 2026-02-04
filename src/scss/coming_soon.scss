@@ -1,0 +1,223 @@
+@import './variable.scss';
+
+.app-main {
+    .coming-soon-view {
+        background-color: $nf-black;
+        min-height: calc(100vh - 70px);
+        padding-bottom: 80px;
+        color: $nf-white;
+
+        // Media Queries for tablet/desktop
+
+        .coming-soon-header {
+            padding: 24px 16px 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: sticky;
+            top: 0;
+            background-color: $nf-black;
+            z-index: 100;
+
+            i {
+                font-size: 24px;
+                color: $nf-red;
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: 800;
+                margin: 0;
+            }
+        }
+
+        .notifications-teaser {
+            display: flex;
+            align-items: center;
+            padding: 13px 16px;
+            background-color: $nf-dark-grey;
+            margin: 8px 16px 24px;
+            border-radius: 4px;
+            gap: 16px;
+
+            i {
+                font-size: 22px;
+            }
+
+            .text {
+                flex: 1;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            i.bi-chevron-right {
+                font-size: 16px;
+                color: $nf-dark-grey;
+            }
+        }
+
+        .coming-soon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding-bottom: 32px;
+
+            .coming-soon-item {
+                .movie-preview {
+                    position: relative;
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .movie-details {
+                    padding: 16px;
+
+                    .item-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 16px;
+
+                        .item-title-img {
+                            max-width: 70%;
+                            height: auto;
+                            // Use text if no logo img
+                            font-size: 24px;
+                            font-weight: 900;
+                            letter-spacing: -0.05em;
+                            text-transform: uppercase;
+                            line-height: 1.1;
+                        }
+
+                        .actions {
+                            display: flex;
+                            gap: 32px;
+                            padding-right: 8px;
+
+                            .action-item {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 6px;
+                                cursor: pointer;
+
+                                i {
+                                    font-size: 21px;
+                                }
+
+                                span {
+                                    font-size: 11px;
+                                    color: $nf-white;
+                                }
+
+                                &:hover {
+
+                                    i {
+                                        color: $nf-white;
+                                    }
+
+                                    span {
+                                        color: $nf-white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .release-info {
+                        margin-bottom: 13px;
+
+                        .date {
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: $nf-white;
+                        }
+                    }
+
+                    .synopsis {
+                        font-size: 14px;
+                        color: $nf-white;
+                        line-height: 1.4;
+                        margin-bottom: 16px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    .genres {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+
+                        span {
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: $nf-white;
+
+                            &:not(:last-child)::after {
+                                content: '•';
+                                margin-left: 8px;
+                                color: $nf-dark-grey;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Standalone Placeholder Styles
+    .placeholder-message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        padding: 32px;
+        background-color: $nf-black;
+        color: $nf-white;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+        i {
+            font-size: 64px;
+            color: $nf-red;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: $nf-dark-grey;
+            margin-bottom: 8px;
+        }
+
+        .btn-back {
+            background-color: $nf-red;
+            color: $nf-white;
+            padding: 13px 32px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 32px;
+            transition: background 0.2s;
+
+            &:hover {
+                background-color: $nf-red;
+            }
+        }
+    }
+}

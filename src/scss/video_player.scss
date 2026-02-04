@@ -1,0 +1,373 @@
+@import './variable.scss';
+
+.app-main {
+    .video-player-view {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $nf-black;
+        z-index: 2000;
+        overflow: hidden;
+
+        &.d-none {
+            display: none;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+
+            &.landscape-mode {
+                @include mobile {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    width: 100vh;
+                    height: 100vw;
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    z-index: 200;
+
+                    video {
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                transition: object-fit 0.3s ease;
+
+                &.zoomed {
+                    object-fit: cover;
+                }
+            }
+
+            .brightness-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $nf-black;
+                opacity: 0;
+                pointer-events: none;
+                z-index: 5;
+            }
+
+            .player-lock-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &.d-none {
+                    display: none;
+                }
+
+                .unlock-btn {
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(10px);
+                    padding: 24px 40px;
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 16px;
+                    color: $nf-white;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+                    i {
+                        font-size: 48px;
+                        animation: lock-pulse 2s infinite ease-in-out;
+                    }
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 1.5px;
+                    }
+                }
+            }
+
+            .player-controls {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 32px;
+                color: $nf-white;
+                z-index: 10;
+                transition: opacity 0.3s;
+
+                &.d-none {
+                    display: none;
+                }
+
+                .controls-top {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    @include mobile {
+                        margin-top: 30px;
+                    }
+
+                    .top-left {
+                        display: flex;
+                        align-items: center;
+                        gap: 24px;
+                    }
+
+                    .top-right {
+                        display: flex;
+                        align-items: center;
+                        gap: 24px;
+                    }
+
+                    i {
+                        font-size: 28px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $nf-white;
+                        }
+
+                        &.player-lock-top {
+                            display: none;
+
+                            @include mobile {
+                                display: block;
+                            }
+                        }
+
+                        &.player-audio-top {
+                            display: none;
+
+                            @include mobile {
+                                display: block;
+                            }
+                        }
+
+                        &.player-zoom {
+                            font-size: 24px;
+                        }
+                    }
+                }
+
+                .controls-left {
+                    position: absolute;
+                    left: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    .brightness-slider {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 16px;
+
+                        i {
+                            font-size: 24px;
+                        }
+
+                        .v-slider {
+                            width: 4px;
+                            height: 150px;
+                            background: rgba(255, 255, 255, 0.3);
+                            position: relative;
+                            border-radius: 2px;
+
+                            .v-slider-track {
+                                position: absolute;
+                                bottom: 0;
+                                width: 100%;
+                                height: 60%;
+                                background: $nf-white;
+                                border-radius: 2px;
+                            }
+
+                            .v-slider-thumb {
+                                position: absolute;
+                                bottom: 60%;
+                                left: 50%;
+                                transform: translate(-50%, 50%);
+                                width: 12px;
+                                height: 12px;
+                                background: $nf-white;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+
+                .controls-center {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 80px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    @include mobile {
+                        gap: 24px;
+                        transform: translate(-35%, -50%);
+                    }
+
+                    .play-pause-btn {
+                        width: 80px;
+                        height: 80px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        i {
+                            font-size: 80px;
+
+                            @include mobile {
+                                font-size: 3.80px;
+                            }
+                        }
+                    }
+
+                    .skip-btn {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        cursor: pointer;
+                        position: relative;
+
+                        i {
+                            font-size: 56px;
+
+                            @include mobile {
+                                font-size: 38px;
+                            }
+                        }
+
+                        span {
+                            position: absolute;
+                            top: 55%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 14px;
+                            font-weight: 700;
+
+                            @include mobile {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+
+                .controls-bottom {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+
+                    .progress-area {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+
+                        input[type="range"] {
+                            flex: 1;
+                            appearance: none;
+                            background: rgba(255, 255, 255, 0.3);
+                            height: 4px;
+                            border-radius: 2px;
+
+                            &::-webkit-slider-thumb {
+                                appearance: none;
+                                width: 16px;
+                                height: 16px;
+                                background: $nf-red;
+                                border-radius: 50%;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .time-display {
+                            font-size: 14px;
+                            font-family: monospace;
+                            min-width: 50px;
+                        }
+                    }
+
+                    .player-menu {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 16px;
+
+                        @include mobile {
+                            justify-content: space-around;
+                            gap: 0;
+                            padding: 0;
+                            overflow-x: visible;
+                        }
+
+                        .menu-item {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 8px;
+                            cursor: pointer;
+                            white-space: nowrap;
+
+                            &.player-lock {
+                                @include mobile {
+                                    display: none;
+                                }
+                            }
+
+                            &.player-audio {
+                                @include mobile {
+                                    display: none;
+                                }
+                            }
+
+                            i {
+                                font-size: 24px;
+                            }
+
+                            span {
+                                font-size: 13px;
+                                font-weight: 500;
+                            }
+
+                            &:hover {
+                                color: $nf-white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

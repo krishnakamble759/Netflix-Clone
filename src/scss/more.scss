@@ -1,0 +1,520 @@
+@import './variable.scss';
+
+.app-main {
+    .more-view {
+        background-color: $nf-black;
+        min-height: calc(100vh - 70px);
+        padding-bottom: 80px;
+        color: $nf-white;
+
+        // Media Queries for tablet/desktop
+
+        .more-header {
+            padding: 32px 16px 16px;
+
+            @include mobile {
+                padding: 24px 12px 12px;
+            }
+
+            @include mid-mobile {
+                padding: 16px 10px;
+            }
+
+            @include too-small-mobile {
+                padding: 12px 8px;
+            }
+
+            .profiles-list {
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                padding-bottom: 16px;
+                scrollbar-width: none;
+
+                @include mobile {
+                    gap: 12px;
+                }
+
+                @include mid-mobile {
+                    gap: 8px;
+                }
+
+                @include too-small-mobile {
+                    gap: 4px;
+                }
+
+                @include big-tab {
+                    justify-content: center;
+                }
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .profile-card {
+                    flex: 0 0 auto;
+                    text-align: center;
+                    width: 75px;
+
+                    @include mobile {
+                        width: 70px;
+                    }
+
+                    @include mid-mobile {
+                        width: 60px;
+                    }
+
+                    @include small-mobile {
+                        width: 55px;
+                    }
+
+                    @include mid-small-mobile {
+                        width: 50px;
+                    }
+
+                    @include too-small-mobile {
+                        width: 45px;
+                    }
+
+                    .profile-img-wrap {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        margin: 0 auto 8px;
+                        transition: all 0.3s ease;
+
+                        @include mobile {
+                            width: 55px;
+                            height: 55px;
+                        }
+
+                        @include mid-mobile {
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                        @include small-mobile {
+                            width: 45px;
+                            height: 45px;
+                        }
+
+                        @include mid-small-mobile {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        @include too-small-mobile {
+                            width: 38px;
+                            height: 38px;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    span {
+                        font-size: 13px;
+                        color: $nf-light-grey;
+                        display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        font-weight: 500;
+                        transition: color 0.3s;
+
+                        @include mobile {
+                            font-size: 12px;
+                        }
+
+                        @include mid-mobile {
+                            font-size: 11px;
+                        }
+
+                        @include small-mobile {
+                            font-size: 10px;
+                        }
+
+                        @include too-small-mobile {
+                            font-size: 9px;
+                        }
+                    }
+
+                    &.active {
+                        width: 95px;
+
+                        @include mobile {
+                            width: 85px;
+                        }
+
+                        @include mid-mobile {
+                            width: 75px;
+                        }
+
+                        @include small-mobile {
+                            width: 65px;
+                        }
+
+                        .profile-img-wrap {
+                            width: 85px;
+                            height: 85px;
+                            border: 3px solid $nf-white;
+                            border-radius: 6px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+                            @include mobile {
+                                width: 75px;
+                                height: 75px;
+                            }
+
+                            @include mid-mobile {
+                                width: 65px;
+                                height: 65px;
+                            }
+
+                            @include small-mobile {
+                                width: 55px;
+                                height: 55px;
+                            }
+
+                            @include too-small-mobile {
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+
+                        span {
+                            color: $nf-white;
+                            font-weight: 700;
+                            font-size: 15px;
+                            margin-top: 6px;
+
+                            @include mobile {
+                                font-size: 14px;
+                            }
+
+                            @include mid-mobile {
+                                font-size: 13px;
+                            }
+
+                            @include small-mobile {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    &.add-profile-card {
+                        .profile-img-wrap {
+                            border: 2px solid $nf-light-grey;
+                            background: transparent;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            i {
+                                font-size: 40px;
+                                color: $nf-white;
+
+                                @include mobile {
+                                    font-size: 35px;
+                                }
+
+                                @include mid-mobile {
+                                    font-size: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .manage-profiles {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                color: $nf-white;
+                font-size: 15px;
+                margin-top: 8px;
+                cursor: pointer;
+
+                i {
+                    font-size: 16px;
+                }
+
+                &:hover {
+                    color: $nf-white;
+                }
+            }
+        }
+
+        .referral-box {
+            background-color: $nf-dark-grey;
+            margin: 16px 0;
+            padding: 24px 16px;
+
+            @include mobile {
+                padding: 20px 14px;
+                margin: 12px 0;
+            }
+
+            @include mid-mobile {
+                padding: 16px 12px;
+                margin: 8px 0;
+            }
+
+            @include too-small-mobile {
+                padding: 12px 8px;
+                margin: 4px 0;
+            }
+
+            .referral-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 13px;
+                margin-bottom: 13px;
+
+                i {
+                    font-size: 26px;
+                    margin-top: 2px;
+
+                    @include mobile {
+                        font-size: 24px;
+                    }
+
+                    @include mid-mobile {
+                        font-size: 22px;
+                    }
+
+                    @include small-mobile {
+                        font-size: 20px;
+                    }
+                }
+
+                h2 {
+                    font-size: 21px;
+                    font-weight: 900;
+                    margin: 0;
+
+                    @include mobile {
+                        font-size: 20px;
+                    }
+
+                    @include mid-mobile {
+                        font-size: 18px;
+                    }
+
+                    @include small-mobile {
+                        font-size: 16px;
+                    }
+
+                    @include too-small-mobile {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            p {
+                font-size: 13px;
+                color: $nf-white;
+                line-height: 1.4;
+                margin-bottom: 8px;
+            }
+
+            .terms-link {
+                font-size: 12px;
+                color: $nf-grey;
+                text-decoration: underline;
+                margin-bottom: 16px;
+                display: block;
+            }
+
+            .copy-link-section {
+                display: flex;
+                gap: 0;
+                margin-bottom: 24px;
+                height: 45px;
+
+                @include too-small-mobile {
+                    height: 38px;
+                }
+
+                input {
+                    flex: 1;
+                    background-color: $nf-black;
+                    border: none;
+                    color: $nf-white;
+                    padding: 13px;
+                    font-size: 14px;
+                    border-radius: 4px 0 0 4px;
+                    outline: none;
+
+                    @include mobile {
+                        font-size: 13.5px;
+                        padding: 11px;
+                    }
+
+                    @include mid-mobile {
+                        font-size: 13px;
+                        padding: 10px;
+                    }
+
+                    @include too-small-mobile {
+                        font-size: 11px;
+                        padding: 8px;
+                    }
+                }
+
+                button {
+                    background-color: $nf-white;
+                    color: $nf-black;
+                    border: none;
+                    padding: 0 16px;
+                    font-weight: 700;
+                    font-size: 16.5px;
+                    border-radius: 0 4px 4px 0;
+                    cursor: pointer;
+                    white-space: nowrap;
+
+                    @include mobile {
+                        font-size: 15px;
+                        padding: 0 14px;
+                    }
+
+                    @include mid-mobile {
+                        font-size: 14px;
+                        padding: 0 12px;
+                    }
+
+                    @include too-small-mobile {
+                        font-size: 12px;
+                        padding: 0 8px;
+                    }
+                }
+            }
+
+            .social-share {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 8px;
+
+                .share-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+
+                    @include too-small-mobile {
+                        gap: 2px;
+                    }
+
+                    cursor: pointer;
+                    position: relative;
+                    flex: 1;
+
+                    &:not(:last-child)::after {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        top: 10%;
+                        height: 80%;
+                        width: 1px;
+                        background-color: $nf-dark-grey;
+                    }
+
+                    img {
+                        width: 38px;
+                        height: 38px;
+
+                        @include mobile {
+                            width: 35px;
+                            height: 35px;
+                        }
+
+                        @include mid-mobile {
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+
+                    span {
+                        font-size: 12px;
+                        color: $nf-grey;
+                        margin-top: 4px;
+
+                        @include mobile {
+                            font-size: 11.5px;
+                        }
+
+                        @include mid-mobile {
+                            font-size: 11px;
+                        }
+
+                        @include too-small-mobile {
+                            font-size: 9px;
+                        }
+                    }
+
+                    i.bi-three-dots {
+                        font-size: 32px;
+                        color: $nf-white;
+                        margin-bottom: -5px;
+
+                        @include mobile {
+                            font-size: 30px;
+                        }
+
+                        @include mid-mobile {
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .more-menu {
+            .menu-item {
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                cursor: pointer;
+                border-bottom: 1px solid $nf-black;
+
+                i {
+                    font-size: 20px;
+                    color: $nf-white;
+
+                    &.bi-check-lg {
+                        font-size: 24px;
+                    }
+                }
+
+                span {
+                    font-size: 16px;
+                    font-weight: 500;
+                    flex: 1;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:active {
+                    background-color: $nf-black;
+                }
+
+                @include too-small-mobile {
+                    padding: 12px;
+
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
