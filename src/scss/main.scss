@@ -17,37 +17,37 @@ $font-family-sans-serif: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, san
 html {
     scrollbar-width: none;
     -ms-overflow-style: none;
-}
 
-body {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
 
-.app-main {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
 
-.modal-content {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+    body {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
 
-.movie-details-modal {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+        .app-main {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
 
-::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-}
+        .movie-details-modal {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
 
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-thumb {
-    background: transparent;
+            .modal-content {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+        }
+    }
 }
 
 body {
