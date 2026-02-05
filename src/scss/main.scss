@@ -1213,6 +1213,13 @@ body {
             max-height: 90vh;
             border-radius: 12px;
             overflow-y: auto;
+            scrollbar-width: none; // Firefox
+            -ms-overflow-style: none; // IE/Edge
+
+            &::-webkit-scrollbar {
+                display: none; // Chrome/Safari/Brave
+            }
+
             z-index: 10;
             box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
             animation: modalFadeIn 0.3s ease-out;
