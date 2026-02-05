@@ -14,7 +14,27 @@ $font-family-sans-serif: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, san
 // Import Bootstrap
 @import "bootstrap/scss/bootstrap";
 
-// Global Styles
+// --- Universal Scrollbar Removal (No !important) ---
+html,
+body,
+.app-main,
+.modal-content,
+.movie-details-modal {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
 body {
     background-color: $nf-black;
     color: $nf-white;
@@ -1189,6 +1209,16 @@ body {
         align-items: center;
         padding: 32px;
 
+        // Ensure no scrollbar on the wrapper
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
         @include mobile {
             padding: 0;
         }
@@ -1213,11 +1243,16 @@ body {
             max-height: 90vh;
             border-radius: 12px;
             overflow-y: auto;
-            scrollbar-width: none; // Firefox
-            -ms-overflow-style: none; // IE/Edge
+
+            // Universal Scrollbar Hiding (Reinforced Specificity)
+            scrollbar-width: none;
+            -ms-overflow-style: none;
 
             &::-webkit-scrollbar {
-                display: none; // Chrome/Safari/Brave
+                display: none;
+                width: 0;
+                height: 0;
+                background: transparent;
             }
 
             z-index: 10;
