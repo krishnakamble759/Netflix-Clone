@@ -1,61 +1,91 @@
-# Netflix Clone
+# 🎬 Netflix Clone - Premium Streaming UI
 
-A fully responsive, feature-rich Netflix Clone built with **HTML**, **SCSS**, and **JavaScript**. This project replicates the core functionality and design of Netflix, including video playback, voice search, responsive carousels, and user profile management.
+![Netflix Clone Header](https://raw.githubusercontent.com/krishnakamble759/Netflix-Clone/main/logos_netflix.svg)
 
-![Netflix Clone Preview](./public/netfilx_logo.png)
+A high-performance, fully responsive **Netflix Clone** built with a modern stack. This project mimics the premium user experience of the Netflix mobile and web app, featuring a robust video player, real-time voice search, and a modular JavaScript architecture.
 
-## 🚀 Features
+---
 
--   **🎬 Video Playback:** Seamless video streaming for movies and TV shows (Hosted locally).
--   **🎤 Voice Search:** Integrated voice command functionality:
-    -   *Strict Mode:* Opens movies automatically if the exact name is spoken (e.g., "Venom").
-    -   *Smart Fallback:* Shows search results if proper names aren't matched exactly (e.g., "School for Good and Evil").
-    -   *Error Handling:* Visual feedback and manual input fallback if the microphone fails.
--   **📂 My List:** Add and remove movies from your personal watchlist.
--   **📱 Responsive Design:** Fully optimized for Desktop, Tablet, and Mobile devices using SCSS.
--   **🔍 Dynamic Search:** Real-time search filtering for movies and genres.
--   **👤 Profile Management:** Switch between user profiles with custom "Continue Watching" contexts.
--   **⬇️ Downloads:** Simulate downloading movies for offline viewing.
+## ⚡ Live Demo
+🚀 **Check out the live site here:** [Netflix Clone Live](https://krishnakamble759.github.io/Netflix-Clone/)
 
-## 🛠️ Technologies Used
+---
 
--   **HTML5:** Semantic structure.
--   **SCSS (Sass):** Advanced styling with variables, mixins, and responsive layouts.
--   **JavaScript (ES6+):** Core logic for DOM manipulation, search algorithms, and event handling.
--   **Vite:** Fast development build tool.
--   **Bootstrap Icons:** For UI icons (Microphone, Search, Play, etc.).
+## 🔥 Key features
 
-## 📦 Installation & Setup
+### 🎥 Immersive Video Experience
+- **Custom Video Player:** Built-in controls for play/pause, seek (+/- 10s), brightness adjustment, and playback speed.
+- **Auto-Transitioning Hero:** A dynamic high-definition slider on the home page that cycles through trending trailers.
+- **Smart Asset Resolution:** Custom logic ensures all videos and images load flawlessly even when deployed in subdirectories (GitHub Pages).
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/krishnakamble759/Netflix-Clone.git
-    cd Netflix-Clone
-    ```
+### 🎤 Advanced Search Capabilities
+- **Voice Search Integration:** Speak the name of a movie to find it instantly. 
+- **Auto-Play Matching:** If an exact match is found via voice, the movie modal opens automatically.
+- **Dynamic Filtering:** Search results update in real-time as you type.
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+### 📱 Premium UI/UX
+- **Fully Responsive:** Beautifully crafted with **SCSS** and **Bootstrap** to look stunning on iPhone, Android, and Desktop.
+- **Profile Management:** Interactive profile selection screen with add/edit functionality.
+- **Offline Simulation:** Functional "Downloads" and "Coming Soon" sections with persistent state.
 
-3.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-    The app will open at `http://localhost:3000` (or similar).
+---
 
-4.  **Build for production:**
-    ```bash
-    npm run build
-    ```
+## 🛠️ Tech Stack
 
-## 🎥 Project Assets
-This repository includes all necessary assets:
--   **Movie Posters & Thumbnails:** Located in `public/`.
--   **Trailers & Video Clips:** High-quality `.mp4` files for playback testing.
+- **Framework:** [Vite](https://vitejs.dev/) (For lighting fast builds)
+- **Language:** JavaScript ES6+, HTML5
+- **Styling:** SCSS (Sass), Bootstrap 5
+- **Icons:** Bootstrap Icons
+- **Deployment:** GitHub Actions (Automated CI/CD)
 
-## 🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+---
 
-## 📄 License
-This project is for educational purposes. All movie assets and trademarks belong to their respective owners.
+## 🏗️ Project Structure
+
+```text
+├── .github/workflows/   # Automated Deployment (CI/CD)
+├── public/              # High-res movie assets & Trailers (.mp4)
+├── src/
+│   ├── js/              # Modular JavaScript Logic
+│   │   ├── main.js      # Core DB & DOM Manipulation
+│   │   ├── downloads.js # LocalStorage Logic
+│   │   └── ...
+│   └── scss/            # Professional Design System
+└── index.html           # Main Entry Point
+```
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone the project**
+   ```bash
+   git clone https://github.com/krishnakamble759/Netflix-Clone.git
+   cd Netflix-Clone
+   ```
+
+2. **Install & Run**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+3. **Build For Production**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📸 Screenshots
+
+| Mobile View | Movie Details | Video Player |
+|:---:|:---:|:---:|
+| ![Mobile Home](https://raw.githubusercontent.com/krishnakamble759/Netflix-Clone/main/public/Trending/passing.png) | ![Modal](https://raw.githubusercontent.com/krishnakamble759/Netflix-Clone/main/public/Popular/lucifer_hd.png) | ![Player](https://raw.githubusercontent.com/krishnakamble759/Netflix-Clone/main/public/ComingSoon/batman%20II.png) |
+
+---
+
+## 📄 Final Notes
+This project was built for educational purposes to demonstrate advanced JavaScript asset handling, SCSS design systems, and modern deployment workflows. All movie trademarks belong to their respective owners.
+
+**Created by [Krishna Kamble](https://github.com/krishnakamble759)**

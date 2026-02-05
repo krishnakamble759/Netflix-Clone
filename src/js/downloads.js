@@ -1,5 +1,7 @@
 // Downloads Logic
 import { videoStats } from './video_metadata.js';
+import { getAssetPath } from './main.js';
+
 
 // Persistent storage for downloaded movies
 let downloadedMovies = JSON.parse(localStorage.getItem('netflix_downloads_v5')) || [
@@ -78,9 +80,9 @@ function renderDownloads(movies) {
             if (setupBtn) {
                 setupBtn.addEventListener('click', () => {
                     downloadedMovies = [
-                        { id: 1, title: "Money Heist", img: "/public/originals/Money Heist.jpg", size: "10.7 MB", quality: "720p", video: "/public/originals/Money_Heist___Series_Trailer___Netflix(720p).mp4" },
-                        { id: 2, title: "Extraction", img: "/public/originals/extraction.png", size: "12.7 MB", quality: "720p", video: "/public/originals/Extraction___Official_Trailer___Screenplay_by_JOE_RUSSO_Directed_by_SAM_HARGRAVE___Netflix(720p).mp4" },
-                        { id: 3, title: "Loev", img: "/public/Popular/Loev.jpg", size: "15.6 MB", quality: "720p", video: "/public/Popular/LOEV___Official_Trailer_[HD]__2017____Shiv_Pandit,_Dhruv_Ganesh,_Siddharth_Menon(720p).mp4" }
+                        { id: 1, title: "Money Heist", img: "originals/money heist.png", size: "10.7 MB", quality: "144p", video: "trailer/money-heist.mp4" },
+                        { id: 2, title: "Extraction", img: "my list/Extraction.png", size: "12.7 MB", quality: "144p", video: "trailer/extraction-bruce-willis-kellan-lutz.mp4" },
+                        { id: 3, title: "Loev", img: "Popular/loev_hd.png", size: "15.6 MB", quality: "144p", video: "trailer/lucifer.mp4" }
                     ];
                     saveToStorage();
                     renderDownloads(downloadedMovies);
@@ -110,30 +112,28 @@ function renderDownloads(movies) {
                 // Image Path Repair Logic (Fixes legacy broken paths in localStorage)
                 let movieImg = movie.img;
                 const repairMap = {
-                    "Before 30": "/public/Popular/before_30_hd.png",
-                    "Game of Thrones": "/public/Popular/game_thrones_hd.png",
-                    "Barbarians": "/public/Popular/barbarians_hd.png",
-                    "Lucifer": "/public/Popular/lucifer_hd.png",
-                    "Adam Project": "/public/Popular/adam_project_hd.png",
-                    "Hubbie Halloween": "/public/Popular/hubbie_halloween_hd.png",
-                    "Loev": "/public/Popular/loev_hd.png",
-                    "FBoy Island": "/public/Negeria/f boy.png",
-                    "Mosul": "/public/Trending/mosul.png",
-                    "Night School": "/public/continue/night School.svg",
-                    "Christmas": "/public/continue/christamas.svg",
-                    "Designated Survivor": "/public/continue/designated.svg"
+                    "Before 30": "Popular/before_30_hd.png",
+                    "Game of Thrones": "Popular/game_thrones_hd.png",
+                    "Barbarians": "Popular/barbarians_hd.png",
+                    "Lucifer": "Popular/lucifer_hd.png",
+                    "Adam Project": "Popular/adam_project_hd.png",
+                    "Hubbie Halloween": "Popular/hubbie_halloween_hd.png",
+                    "Loev": "Popular/loev_hd.png",
+                    "FBoy Island": "Negeria/f_boy.png",
+                    "Mosul": "Trending/mosul.png",
+                    "Night School": "continue/night School.svg",
+                    "Christmas": "continue/christamas.svg",
+                    "Designated Survivor": "continue/designated.svg"
                 };
 
-                // Check for broken paths or missing /public/
-                if (!movieImg || movieImg.includes('.svg') && !movieImg.includes('/public/') || repairMap[movie.title]) {
-                    if (repairMap[movie.title]) {
-                        movieImg = repairMap[movie.title];
-                    } else if (movieImg && !movieImg.startsWith('/public/')) {
-                        movieImg = '/public' + movieImg;
-                    }
+                if (repairMap[movie.title]) {
+                    movieImg = repairMap[movie.title];
                 }
 
-                if (img) { img.src = movieImg; img.alt = movie.title; }
+                if (img) {
+                    img.src = getAssetPath(movieImg);
+                    img.alt = movie.title;
+                }
                 if (title) title.textContent = movie.title;
                 const removeOpt = clone.querySelector('.remove-option');
                 if (pInfo) pInfo.textContent = `${movie.size} | ${movie.quality}`;

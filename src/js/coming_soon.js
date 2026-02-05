@@ -1,43 +1,44 @@
 // Coming Soon Data and Logic
+import { getAssetPath } from './main.js';
 
 const upcomingMovies = [
 
     {
         title: "Project Hail Mary",
-        img: "/public/ComingSoon/project_hail_mary.png",
-        video: "/trailer/project-hail-mary.mp4",
+        img: "ComingSoon/project_hail_mary.png",
+        video: "trailer/project-hail-mary.mp4",
         releaseDate: "Coming March 2026",
         description: "Ryland Grace is the sole survivor on a desperate, last-chance mission—and if he fails, humanity and the earth itself will perish.",
         genres: ["Sci-Fi", "Space", "Suspense"]
     },
     {
         title: "The Batman: Part II",
-        img: "/public/comingSoon/batman II.png",
-        video: "/trailer/batman-robert-pattinson.mp4",
+        img: "comingSoon/batman II.png",
+        video: "trailer/batman-robert-pattinson.mp4",
         releaseDate: "Coming October 2026",
         description: "Batman continues his war on crime in Gotham City, facing new threats that challenge his physical limits and his detective skills.",
         genres: ["Action", "Crime", "Dark"]
     },
     {
         title: "Avengers: Doomsday",
-        img: "/public/ComingSoon/avengers_doomsday.png",
-        video: "/trailer/avengers-doomsday-robert-downey-jr.mp4",
+        img: "ComingSoon/avengers_doomsday.png",
+        video: "trailer/avengers-doomsday-robert-downey-jr.mp4",
         releaseDate: "Coming May 2026",
         description: "Earth's mightiest heroes must band together with allies from across the multiverse to face a threat that endangers all of reality.",
         genres: ["Action", "Superhero", "Epic"]
     },
     {
         title: "Stranger Things: 5",
-        img: "/public/ComingSoon/stranger things.png",
-        video: "/trailer/stranger-things-finale.mp4",
+        img: "ComingSoon/stranger things.png",
+        video: "trailer/stranger-things-finale.mp4",
         releaseDate: "Coming November 2026",
         description: "the group seeking to find and kill Vecna following the opening of rifts throughout Hawkins.",
         genres: ["Horror", "Science Fiction", "Coming of Age Drama"]
     },
     {
         title: "Dune: Messiah",
-        img: "/public/ComingSoon/dune_messiah.png",
-        video: "/trailer/dune-first-timothée-chalamet-robert.mp4",
+        img: "ComingSoon/dune_messiah.png",
+        video: "trailer/dune-first-timothée-chalamet-robert.mp4",
         releaseDate: "Coming December 2026",
         description: "Paul Atreides faces the consequences of becoming a messiah to the Fremen as political intrigue and betrayal threaten his rule.",
         genres: ["Sci-Fi", "Drama", "Epic"]
@@ -58,7 +59,7 @@ export function initComingSoon() {
 
         const img = item.querySelector('.movie-preview img');
         if (img) {
-            img.src = movie.img;
+            img.src = getAssetPath(movie.img);
             img.alt = movie.title;
             // Add click listener to play trailer
             img.addEventListener('click', () => {
