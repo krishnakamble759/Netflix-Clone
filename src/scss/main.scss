@@ -14,11 +14,26 @@ $font-family-sans-serif: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, san
 // Import Bootstrap
 @import "bootstrap/scss/bootstrap";
 
-// --- Universal Scrollbar Removal (No !important) ---
-html,
-body,
-.app-main,
-.modal-content,
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.app-main {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.modal-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 .movie-details-modal {
     scrollbar-width: none;
     -ms-overflow-style: none;
