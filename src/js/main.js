@@ -1464,7 +1464,6 @@ if (brightnessSlider) {
         let percentage;
         if (isLandscape) {
             // When rotated 90deg, the vertical slider is horizontal on screen.
-            // Dragging left-to-right (relative to screen) is visually moving the thumb.
             percentage = (clientX - rect.left) / rect.width;
         } else {
             // Normal vertical slider logic
@@ -1498,13 +1497,95 @@ if (brightnessSlider) {
     });
     window.addEventListener('touchmove', (e) => {
         if (isDraggingBrightness) {
-            e.preventDefault(); // Prevent scrolling while adjusting brightness
+            e.preventDefault();
             updateBrightness(e);
         }
     }, { passive: false });
 
     window.addEventListener('mouseup', () => isDraggingBrightness = false);
     window.addEventListener('touchend', () => isDraggingBrightness = false);
+}
+
+// 2. Volume Logic
+const volumeSlider = document.querySelector('#volume-slider-container');
+const volumeTrack = document.querySelector('#volume-track');
+const volumeThumb = document.querySelector('#volume-thumb');
+const volumeIcon = document.querySelector('#volume-icon');
+
+if (volumeSlider) {
+    let isDraggingVolume = false;
+
+    const updateVolume = (event) => {
+        const rect = volumeSlider.getBoundingClientRect();
+        const videoContainer = document.querySelector('.video-container');
+        const isLandscape = videoContainer && videoContainer.classList.contains('landscape-mode') && window.innerWidth <= 1200;
+
+        let clientX, clientY;
+        if (event.touches) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+        } else {
+            clientX = event.clientX;
+            clientY = event.clientY;
+        }
+
+        let percentage;
+        if (isLandscape) {
+            // In landscape (rotated), dragging left-to-right increases volume
+            percentage = (rect.right - clientX) / rect.width;
+        } else {
+            // Normal vertical slider logic
+            percentage = (rect.bottom - clientY) / rect.height;
+        }
+
+        percentage = Math.max(0, Math.min(1, percentage));
+
+        // Update Video Volume
+        if (mainVideo) mainVideo.volume = percentage;
+
+        // Update UI
+        if (volumeTrack) volumeTrack.style.height = `${percentage * 100}%`;
+        if (volumeThumb) volumeThumb.style.bottom = `${percentage * 100}%`;
+
+        // Update Icon
+        if (volumeIcon) {
+            if (percentage === 0) volumeIcon.className = 'bi bi-volume-mute';
+            else if (percentage < 0.5) volumeIcon.className = 'bi bi-volume-down';
+            else volumeIcon.className = 'bi bi-volume-up';
+        }
+
+        resetHideTimer();
+    };
+
+    const startDragVolume = (e) => {
+        isDraggingVolume = true;
+        updateVolume(e);
+    };
+
+    volumeSlider.addEventListener('mousedown', startDragVolume);
+    volumeSlider.addEventListener('touchstart', (e) => {
+        startDragVolume(e);
+    }, { passive: false });
+
+    window.addEventListener('mousemove', (e) => {
+        if (isDraggingVolume) updateVolume(e);
+    });
+    window.addEventListener('touchmove', (e) => {
+        if (isDraggingVolume) {
+            e.preventDefault();
+            updateVolume(e);
+        }
+    }, { passive: false });
+
+    window.addEventListener('mouseup', () => isDraggingVolume = false);
+    window.addEventListener('touchend', () => isDraggingVolume = false);
+
+    // Initial state
+    if (mainVideo) {
+        const vol = mainVideo.volume;
+        if (volumeTrack) volumeTrack.style.height = `${vol * 100}%`;
+        if (volumeThumb) volumeThumb.style.bottom = `${vol * 100}%`;
+    }
 }
 
 // 2. Playback Speed Logic
