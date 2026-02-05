@@ -13,7 +13,7 @@ const upcomingMovies = [
     },
     {
         title: "The Batman: Part II",
-        img: "comingSoon/batman II.png",
+        img: "ComingSoon/batman II.png",
         video: "trailer/batman-robert-pattinson.mp4",
         releaseDate: "Coming October 2026",
         description: "Batman continues his war on crime in Gotham City, facing new threats that challenge his physical limits and his detective skills.",
